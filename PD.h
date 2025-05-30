@@ -7,7 +7,8 @@ typedef struct pilha {
 } Pilha;
 
 Pilha *cria_pilha();
-int popPilha(Pilha *p);
-void pushPilha(Pilha *p, int x);
+Certificado popPilha(Pilha *p);
+void pushPilha(Pilha *p, char *nome, int valor);
 void freePilha(Pilha *p);
+int pilhaVazia(Pilha *p);
 #endif //PD_INCLUDED_H
