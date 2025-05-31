@@ -33,11 +33,10 @@ Certificado popPilha(Pilha *p) {
 	return temp;
 }
 
-void pushPilha(Pilha *p, char *nome, int valor) {
+void pushPilha(Pilha *p, Certificado certificado) {
 	Node *novo = (Node *)malloc(sizeof(Node));
 	novo->certificado = (Certificado *)malloc(sizeof(Certificado));
-	novo->certificado->nome = nome;
-	novo->certificado->valor = valor;
+	*(novo->certificado) = certificado;
 	novo->prox = p->topo;
 	p->topo = novo;
 }

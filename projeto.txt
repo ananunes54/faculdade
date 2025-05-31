@@ -1,0 +1,35 @@
+a pilha e a fila vão usar certificados ou ponteiros para certificados?
+* pilha estatica: usa vetores, então seriam ou vetores de certificados ou vetores de ponteiros para certificados;
+se fossem vetores para certificados: teria como sempre usar os mesmos espaços na memória? se nao, em cada push teria que alocar espaço na memória, em cada pop, teria que liberar memória ou 
+qual será o retorno das funções push e pop para pilha e fila?
+como será tratada a entrada?
+
+
+
+o usuário vai digitar tudo na mesma linha. será mais fácil ler tudo de uma vez em um buffer e depois tratar a entrada
+como será tratada a entrada? 
+
+
+
+o primeiro valor da entrada (antes do primeiro espaço ' ') é o que define a função escolhida, a partir da escolha dela, é possível saber quais serão os tipos de dados seguintes (os argumentos das funções).
+
+1- lê a entrada em um buffer;
+2- de acordo com o primeiro item da entrada, serão definidos os tipos de dados e em seguida será chamada a respectiva função;
+
+Como funcionaria cada função?
+
+Certificado:
+	após "escolhida" essa função, é preciso separar o que faz parte de "nome" e o que faz parte de "ch";
+	transformar ch em inteiro;
+	dar push na pilha (os paramteros podem ser <pilha> <nome> <ch>)
+
+Departamento:
+	após escolhida a função, é preciso transformar em inteiro; (o inteiro vai definir a quantidade de vezes a ser repetido (!))
+	para retirar da pilha, dar pop, e colocar na pilha, dar push: -se o retorno do pop for um certificado e o argumento do push for um certificado, é possível fazer "push(pop(pilha))"
+
+Coordenador:
+	após escolhida a função, é 
+
+
+
+

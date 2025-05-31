@@ -11,8 +11,8 @@ typedef struct Fila {
 } Fila;
 
 Fila *cria_fila();
-Certificado *popFila(Fila *f);
-void pushFila(Fila *f, char *nome, int valor);
+Certificado popFila(Fila *f);
+void pushFila(Fila *f, Certificado certificado);
 void freeFila(Fila *f);
 int filaVazia(Fila *f);
 #endif //FE_INCLUDED_H
