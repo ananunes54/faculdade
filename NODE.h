@@ -1,7 +1,12 @@
 #ifndef NODE_INCLUDED_H
 #define NODE_INCLUDED_H
-#define MAX 100
-#define TAMANHO_BUFFER_NOME 102
+
+#define TAMANHO_MAXIMO_PILHA 50
+#define TAMANHO_MAXIMO_FILA 25
+#define TAMANHO_BUFFER_NOME 100
+#define TAMANHO_BUFFER 128
+
+
 typedef struct Certificado {
 	char nome[TAMANHO_BUFFER_NOME];
 	int ch;
@@ -12,8 +17,6 @@ typedef struct node {
 	struct node *prox;
 } Node;
 
-Node *InsereFinal(Node *cabeca, Certificado certificado);
-void LiberaListaÇigada(Node *cabeca);
 
 #endif //NODE_INCLUDED_H
 

@@ -1,10 +1,12 @@
-#ifndef FE_INCLUDED_H
-#define FE_INCLUDED_H
+#ifndef FD_INCLUDED_H
+#define FD_INCLUDED_H
 #include "NODE.h"
 
-typedef struct Fila {
-	Certificado vetor[TAMANHO_MAXIMO_FILA];
-	int inicio, fim, elementos_na_fila;
+typedef struct Fila
+{
+	Node *inicio;
+	Node *fim;
+	int elementos_na_fila;
 } Fila;
 
 Fila *cria_fila();
@@ -14,4 +16,4 @@ void freeFila(Fila *f);
 void printFila(Fila *f);
 int filaVazia(Fila *f);
 int filaCheia(Fila *f);
-#endif //FE_INCLUDED_H
+#endif //FD_INCLUDED_H
