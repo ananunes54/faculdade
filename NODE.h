@@ -5,6 +5,7 @@
 #define TAMANHO_MAXIMO_FILA 25
 #define TAMANHO_BUFFER_NOME 100
 #define TAMANHO_BUFFER 128
+#define TAMANHO_SISTEMA 100
 
 
 typedef struct Certificado {

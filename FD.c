@@ -1,7 +1,7 @@
 #include "FD.h"
 #include <stdlib.h>
 #include <string.h>
-
+#include <stdio.h>
 
 
 Fila *cria_fila()
@@ -46,6 +46,26 @@ void pushFila(Fila *f, Certificado certificado)
 	}
 
 	f->elementos_na_fila = f->elementos_na_fila + 1;
+}
+
+
+
+void freeFila(Fila *f)
+{
+	if (f->inicio == NULL && f->fim == NULL)
+	{
+		free(f);
+		return;
+	}
+	
+	else 
+	{
+		Node *aux = f->inicio->prox;
+		free(f->inicio->certificado);
+		free(f->inicio);
+		f->inicio = aux;
+		freeFila(f);
+	}
 }
 
 
