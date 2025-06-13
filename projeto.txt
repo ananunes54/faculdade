@@ -1,5 +1,30 @@
-A primeira parte do projeto consistiu em definir como seria a estrutura dos elementos a serem inseridos na pilha e na fila
-A estrura que já estava praticamente definida era o certificado, que deveria conter o nome do aluno e sua ch; as duas opçoes eram fazer o nome como vetor estatico dentro do certificado ou usar um ponteiro para a heap. Como a segunda precisaria de alocação dinamica e sua unica vantagem seria ocupar menos espaço na pilha, usamos a primeira das opções.
-A proxima decisao foi: cada nodo das listas ligadas teria um ponteiro para um certificado ou o certificado em si? 
+Integrantes:
+Ana Clara de Paula Nunes
+Enzo Jost
 
-após definidas as estruturas principais, apenas implementamos as operações na pilha e na fila. um ponto que merece destaque é a necessidade de, ao implementar as funções push, alocar memória primeiramento para o nodo e em seguida alocar para o certificado; ao implementar as funções para liberar pilha/fila, lembrar de liberar os certificados e em seguida os nodos
+
+A primeira parte do projeto consistiu em definir como seria a estrutura dos elementos a serem inseridos na pilha e na fila.
+Como grande parte do programa usar as estruturas "Certificado" e "Node", criamos um arquivo "NODE.h" onde também definimos com "#define" alguns valores importantes e que seriam utilizados por vários arquivos (facilita na hora de fazer ajustes).
+
+
+A estrura que já estava praticamente definida era o certificado, que deveria conter o nome do aluno e sua ch; as duas opçoes eram fazer o nome como vetor estatico dentro do certificado ou usar um ponteiro para a heap. Como a segunda precisaria de alocação dinamica e sua unica vantagem seria ocupar menos espaço na pilha, usamos a primeira das opções.
+
+
+A proxima decisao foi: cada nodo das listas ligadas teria um ponteiro para um certificado ou o certificado em si? Optamos pelo ponteiro para o certificado.
+
+
+Após definidas as estruturas principais, seguimos para as operações na pilha e na fila. um ponto que merece destaque é a necessidade de, ao implementar as funções push, alocar memória primeiramento para o nodo e em seguida alocar para o certificado; ao implementar as funções para liberar pilha/fila, lembrar de liberar os certificados e em seguida os nodos.
+Outro ponto importante: o retorno dos "pop()". Inicialmente, o retorno seria um ponteiro para estruturas, porém ao longo do projeto percebemos que seria uma complicação a mais. Se fossemos retornar um ponteiro precisaríamos liberar o espaço de cada um dos certificados alocados e nos certificarmos de atribuirmos aos ponteiros para certificados já liberados "NULL", além de outras "dores de cabeça".
+
+
+Uma vez as estruturas pilha e fila funcionando, foi preciso definir como tratar a entrada do usuário. Supondo que todas as entradas sejam válidas, o mais fácil seria, de acordo com a primeira letra da entrada (primeira letra da função), direcionar qual função foi escolhida. Observação: como existem duas funções cujas letras iniciais coincidem, é verificada a segunda letra.
+Para as funções que requerem parâmetros, foi criada uma outra função para categorizá-los/formatá-los de acordo com o necessário. Exemplo: algumas funções precisam ser divididas em <função><string><int>, outras em <função><string>, outras em <função>, e assim por diante.
+
+
+O próximo passo da lógica do programa se trata do direcionamento dado a cada entrada, então criamos funções para "certificado...", "valida...", etc. Algumas tiveram implementações muito simples e sem desafios; as mais complicadas envolveram lidar com o sistema.
+Como é permitida a validação (diminui a ch de determinado aluno) e a "emissão" de mais de um certificado para o mesmo aluno, além da exibição dos alunos presentes no sistema, fica claro como o acesso às posições do sistema são razoavelmente recorrentes.
+
+
+Havia o caminho das estruturas (lista ligada/vetor) de ponteiros para certificados ou de certificados em si. Se fosse escolhida a opção da lista ligada, a lista seria percorrida até encontrar o aluno ou até encontrar o final (para inserir outro certificado). Já que um dos conteúdos do próximo semestre tem relação com funções Hash e esta reduz a complexidade a O(1) (pelo menos na teoria, para o nosso programa), foi a escolhida.
+Para implementar a função hash escolhemos o algoritmo mais simples possível. Problema: por ser simples, fizemos testes para detectar o número de colisões, e foi consideravelmente alto. Para as colisões escolhemos usar listas ligadas pois com vetores seria limitado ao tamanho do vetor (desvantagem em relação à opção escolhida) e continuaríamos com a necessidade de comparar os nomes dos alunos até encontrar o desejado.
+A vantagem de tratar as colisões da outra forma seria a simplicidade par liberar o "sistema" (provavelmente apenas "free()" no vetor do sistema); da forma como fizemos, precisamos verificar quais nodos do sistema eram "cabeças" de listas ligas e caso fossem, ir até o final da lista e retornar liberando cada nodo. No final foi preciso adicionar uma espécie de "flag" (chamada chaining) para indicar que "o programa estava dentro" de uma lista ligada e definir uma variável dentro da main() com a quantidade de alunos no sistema para que fosse passada e funcionasse como caso base de LiberaSistema(...).
